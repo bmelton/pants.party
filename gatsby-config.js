@@ -1,13 +1,14 @@
 const config = require('./src/utils/siteConfig')
 let contentfulConfig
 
+
 try {
   contentfulConfig = require('./.contentful')
 } catch (e) {
   contentfulConfig = {
     production: {
-      spaceId: process.env.SPACE_ID,
-      accessToken: process.env.ACCESS_TOKEN,
+      spaceId: process.env.CONTENTFUL_SPACE_ID,
+      accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
     },
   }
 } finally {
@@ -61,7 +62,7 @@ module.exports = {
     `gatsby-plugin-catch-links`,
     {
       resolve: 'gatsby-source-contentful',
-      options:
+      options: 
         process.env.NODE_ENV === 'development'
           ? contentfulConfig.development
           : contentfulConfig.production,
