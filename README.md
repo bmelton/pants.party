@@ -1,176 +1,68 @@
-# gatsby-starter-gcn
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-A starter template to build amazing static websites with Gatsby, Contentful and Netlify. Inspired by [gatsby-contentful-starter](https://github.com/contentful-userland/gatsby-contentful-starter).
+## Available Scripts
 
-For Gatsby `v1` please use the [v1 branch](https://github.com/ryanwiemer/gatsby-starter-gcn/tree/v1)
+In the project directory, you can run:
 
-## Features
+### `npm start`
 
-- Contentful integration with ready to go placeholder content
-- Netlify integration including a pre-built contact form
-- Minimal responsive design - made to customize or tear apart
-- Pagination logic
-- Styled components
-- SEO Friendly Component
-  - JSON-LD Schema
-  - OpenGraph sharing support
-  - Sitemap Generation
-- Google Analytics
-- Progressive Web app
-- Offline Support
-- RSS Feed
-- [Gatsby Standard module](https://www.npmjs.com/package/eslint-config-gatsby-standard) for linting Javascript with StandardJS
-- Stylelint support for Styled Components to lint the CSS in JS
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## Demo
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.
 
-https://gcn.netlify.com/
+### `npm test`
 
-![](screenshots/demo.jpg)
+Launches the test runner in the interactive watch mode.<br>
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-## Getting Started
+### `npm run build`
 
-### Install
+Builds the app for production to the `build` folder.<br>
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-```
-git clone https://github.com/ryanwiemer/gatsby-starter-gcn.git
-npm i
-```
+The build is minified and the filenames include the hashes.<br>
+Your app is ready to be deployed!
 
-Or via the [Gatsby CLI](https://www.npmjs.com/package/gatsby-cli)
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-```
-gatsby new gatsby-starter-gcn https://github.com/ryanwiemer/gatsby-starter-gcn.git
-```
+### `npm run eject`
 
-### Setup Contentful
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-1.  [Sign up](https://www.contentful.com/sign-up/) for Contentful and create a new empty space
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-2.  `npm run setup`
+Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-3.  Enter in the requested info for your Contentful space found here: **app.contentful.com** → **Space Settings** → **API keys**. You will need to provide both a standard API key (first tab) and a management key (second tab).
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Customization
+## Learn More
 
-### Website Data
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-Edit [`/src/utils/siteConfig.js`](https://github.com/ryanwiemer/gatsby-starter-gcn/blob/master/src/utils/siteConfig.js)
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-```js
-module.exports = {
-  siteTitle: 'GCN',
-  siteTitleAlt: 'GCN Gatsby Starter',
-  publisher: 'Publisher named GCN',
-  siteDescription:
-    'A starter template to build amazing static websites with Gatsby, Contentful and Netlify',
-  siteUrl: 'https://gcn.netlify.com',
-  postsPerHomePage: 7,
-  postsPerPage: 6,
-  author: 'GCN User',
-  authorUrl: 'https://gcn.netlify.com/about/',
-  userTwitter: '@twitter',
-  shortTitle: 'GCN App',
-  shareImage: '/logos/share.jpg',
-  shareImageWidth: 900,
-  shareImageHeight: 600,
-  siteLogo: '/logos/logo-512.png',
-  backgroundColor: '#e9e9e9',
-  themeColor: '#121212',
-  copyright: 'Copyright © 2018 GCN User',
-}
-```
+### Code Splitting
 
-**Note:** If you do not see your changes reflected when developing locally you may need to delete the `.cache` folder and restart the development server.
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-### Theme
+### Analyzing the Bundle Size
 
-Edit [`/src/styles/theme.js`](https://github.com/ryanwiemer/gatsby-starter-gcn/blob/master/src/styles/theme.js)
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-```js
-const theme = {
-  colors: {
-    base: '#121212',
-    secondary: '#e9e9e9',
-    tertiary: '#f3f3f3',
-    highlight: '#5b8bf7',
-  },
-  sizes: {
-    maxWidth: '1200px',
-    maxWidthCentered: '650px',
-  },
-  responsive: {
-    small: '35em',
-    medium: '50em',
-    large: '70em',
-  },
-}
-```
+### Making a Progressive Web App
 
-### Using Gatsby Standard
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
 
-1.  Quickly check your code for errors with the `npm test` script
-2.  You can view the [Gatsby Standard README](https://github.com/brandonkal/eslint-config-gatsby-standard) for details on how to integrate this project's included Gatsby Standard, Stylelint, and Prettier modules into your text editor
+### Advanced Configuration
 
-### Content and SEO
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
 
-1.  You can replace the `share.jpg` and `logo-512` files in the `static/logos` directory. After replacing these files ensure that you edit the image size dimensions specified in `/src/utils/siteConfig.js`
-2.  Meta descriptions are defined in Contentful. If you choose to leave this field blank on new posts a 320 character excerpt of the post/page will be used.
-3.  **IMPORTANT:** Be sure to manually enter at least one meta description on a page and post in Contentful or the site will fail to build.
+### Deployment
 
-## Deployment
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
-### Manual Netlify Deployment
+### `npm run build` fails to minify
 
-1.  Run `gatsby build`
-
-2.  Drag and drop the folder `/public/` into Netlify
-
-### Netlify Deployment From Git (Recommended)
-
-1.  [New Netlify website from Git](https://app.netlify.com/start)
-
-2.  Connect with GitHub and select your repo
-
-3.  Navigate to Netlify: **Settings** → **Build & Deploy** → **Build Environment Variables**. Add the following environment variables using the Space ID and Content Delivery API - access token from Contentful. Additionally if desired you can enter a Google Analytics ID. The variables must be named exactly like this in order to work properly.
-
-```
-ACCESS_TOKEN
-SPACE_ID
-GOOGLE_ANALYTICS
-```
-
-![](screenshots/netlify-build-environment-variables.jpg)
-
-4.  Navigate to Netlify: **Deploys**. Click `Trigger deploy` to manually trigger a deploy to confirm the website is building successfully using your build environment variables. At this point be aware that every time you push to `master` a deploy will automatically start and be published to production.
-
-## Additional Settings
-
-### Contentful Webhook (Optional)
-
-1.  Navigate to Netlify:
-    **Settings** → **Build & Deploy** → **Build hooks**.
-    Create a new build hook.
-
-2.  Navigate to Contentful:
-    **app.contentful.com** → **Space Settings** → **Webhooks**. Create a webhook using the Netlify build URL that you just created
-    and configure which events should trigger the build on production. For example the following will rebuild the production website every time a post or page is published, unpublished or deleted:
-
-![](screenshots/contentful-webhook-selected-events.jpg)
-
-### Netlify Form Notifications (Optional)
-
-1.  Navigate to Netlify:
-    **Forms** → **Notifications**
-
-2.  Click the add notification dropdown and select your desired notification method.
-
-![](screenshots/netlify-form-notifcations.jpg)
-
-## Useful Tips
-
-- If you make edits to your Contentful space while running `gatsby develop` you will need to stop it and rerun the command to see the changes reflected. For example a new post or page will not automatically show up until the website has been rebuilt.
-- The template assumes you have at least **one page**, **one post** and **one tag** in Contentful. If you do not the website will fail to build.
-- The SEO component assumes you have entered at least one meta description in Contentful for a post and one for a page. If you do not the website will fail to build. See the Content and SEO section above.
-- **DO NOT** store your Contentful access tokens or space ids anywhere in GitHub. Treat them like passwords.
-- **Yarn Users:** remove the `yarn*` line from the `.gitignore` file to avoid discrepancies in the Netlify deploy.
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
