@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/eaa3f200-5a47-40c6-a9f1-fa44ea43bbd7/deploy-status)](https://app.netlify.com/sites/pantsparty/deploys)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
