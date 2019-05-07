@@ -12,6 +12,7 @@
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "storybook": "start-storybook -p 9001 -c .storybook",
     "start-react": "react-scripts start",
     "start": "npm-run-all -p watch-css start-react",
     "build-react": "react-scripts build",
@@ -33,5 +34,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@storybook/react": "^5.0.11"
   }
 }
