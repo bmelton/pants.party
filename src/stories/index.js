@@ -12,5 +12,5 @@ storiesOf("Button", module)
         <Button label={`sign up`} fill={false} active={true} />
     ))
     .add("disabled", () => (
-        <Button label={`continue`} active={false} />
+        <Button label={`disabled`} active={false} />
     ))
