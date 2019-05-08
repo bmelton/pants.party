@@ -2,6 +2,9 @@
 
 # static files
 src/**/*.css
+*/**/*.swp
+*/**/*.swo
+*.swp
 
 # dependencies
 /node_modules

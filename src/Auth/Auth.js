@@ -6,15 +6,16 @@ export default class Auth {
   idToken;
   expiresAt;
 
-  auth0 = new auth0.WebAuth({
-    domain: process.env.REACT_APP_AUTH0_DOMAIN,
-    clientID: process.env.REACT_APP_AUTH0_CLIENT_ID,
-    redirectUri: process.env.REACT_APP_AUTH0_CALLBACK_URL,
-    responseType: 'token id_token',
-    scope: 'openid'
-  });
-
   constructor() {
+    this.auth0 = new auth0.WebAuth({
+      domain: process.env.REACT_APP_AUTH0_DOMAIN,
+      clientID: process.env.REACT_APP_AUTH0_CLIENT_ID,
+      redirectUri: process.env.REACT_APP_AUTH0_CALLBACK_URL,
+      responseType: 'token id_token',
+      scope: 'openid profile'
+    });
+
+    this.getProfile = this.getProfile.bind(this);
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
@@ -24,20 +25,37 @@ export default class Auth {
     this.renewSession = this.renewSession.bind(this);
   }
 
+  getProfile() {
+    return this.profile;
+  }
+
   login() {
     this.auth0.authorize();
   }
 
   handleAuthentication() {
-    this.auth0.parseHash((err, authResult) => {
-      if (authResult && authResult.accessToken && authResult.idToken) {
+    return new Promise((resolve, reject) => {
+      this.auth0.parseHash((err, authResult) => {
+        if(err) return reject(err);
+        console.log(authResult);
+
+        if(!authResult || !authResult.idToken) {
+          return reject(err);
+        }
         this.setSession(authResult);
-      } else if (err) {
-        history.replace('/home');
-        console.log(err);
-        alert(`Error: ${err.error}. Check the console for further details.`);
-      }
-    });
+        resolve();
+
+        /*
+        if (authResult && authResult.accessToken && authResult.idToken) {
+          this.setSession(authResult);
+        } else if (err) {
+          history.replace('/home');
+          console.log(err);
+          alert(`Error: ${err.error}. Check the console for further details.`);
+        }
+        */
+      });
+    })
   }
 
   getAccessToken() {
@@ -56,6 +74,7 @@ export default class Auth {
     let expiresAt = (authResult.expiresIn * 1000) + new Date().getTime();
     this.accessToken = authResult.accessToken;
     this.idToken = authResult.idToken;
+    this.profile = authResult.idTokenPayload;
     this.expiresAt = expiresAt;
 
     // navigate to the home route
@@ -92,8 +111,6 @@ export default class Auth {
   }
 
   isAuthenticated() {
-    // Check whether the current time is past the
-    // access token's expiry time
     let expiresAt = this.expiresAt;
     return new Date().getTime() < expiresAt;
   }

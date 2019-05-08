@@ -3,6 +3,7 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import Button from "../../src/features/common/Button";
+import Footer from "../../src/components/Footer";
 
 storiesOf("Button", module)
     .add("active with fill", () => (
@@ -13,4 +14,9 @@ storiesOf("Button", module)
     ))
     .add("disabled", () => (
         <Button label={`disabled`} active={false} />
+    ))
+
+storiesOf("Footer", module)
+    .add("footer", () => (
+        <Footer />
     ))

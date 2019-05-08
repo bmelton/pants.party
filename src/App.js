@@ -1,10 +1,34 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import {withRouter} from 'react-router';
+
 import './App.css';
-import Header from './features/Header/Header';
+import { blue, blueGrey } from '@material-ui/core/colors'
+
+import Routes from './routes';
 
 import dotenv from 'dotenv';
 dotenv.config();
 
+const theme = createMuiTheme({
+  palette: {
+    secondary: {
+      main: blue[900]
+    },
+    primary: {
+      main: blueGrey[900]
+    }
+  },
+  typography: {
+    // Use the system font instead of the default Roboto font.
+    fontFamily: [
+      '"Lato"',
+      'sans-serif'
+    ].join(',')
+  }
+});
+
+/*
 class App extends Component {
   goTo(route) {
     this.props.history.replace(`/${route}`)
@@ -18,6 +42,7 @@ class App extends Component {
     this.props.auth.logout();
   }
 
+  /*
   componentDidMount() {
     const { renewSession } = this.props.auth;
 
@@ -27,14 +52,42 @@ class App extends Component {
   }
 
   render() {
+      console.log(this.props);
     return (
       <div>
-        <Header auth={ this.props.auth } />
+        <Route exact path='/callback' render={() => (
+          <Callback auth={this.props.auth}/>
+        )}/>
+        <MuiThemeProvider theme={theme}>
+          <Routes />
+        </MuiThemeProvider>
       </div>
     );
   }
 }
+*/
 
-console.log(process.env);
+function login(props) {
+  return ( 
+    <button onClick={props.auth.login}>Log in</button>
+  )
+}
+function App(props) {
+  const { renewSession } = props.auth;
+  if (localStorage.getItem('isLoggedIn') === 'true') {
+    renewSession();
+    console.log(props.auth);
+  }
 
-export default App;
+  const authenticated = props.authenticated;
+
+  return (
+    <div>
+      <MuiThemeProvider theme={theme}>
+        <Routes authenticated={authenticated} auth={props.auth} history={props.history} />
+      </MuiThemeProvider>
+    </div>
+  );
+}
+
+export default withRouter(App);
